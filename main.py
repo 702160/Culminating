@@ -2,6 +2,7 @@ import time
 import TextDelay 
 import os
 from time import sleep
+import turtle
 
 def clear_console_instant(clear):
   sleep (0.2)
@@ -33,7 +34,7 @@ def main():
     global already_guessed
     global length
     global play_game
-    words_to_guess = "therapy"
+    words_to_guess = "therapy" 
     word = (words_to_guess)
     length = len(word)
     count = 0
@@ -70,87 +71,77 @@ while True:
       else:
           count += 1
           if count == 1:
-            time.sleep(1)
-            print("   _____ \n"
-                  "  |     | \n"
-                  "  |     | \n"
-                  "  |     | \n"
-                  "  |       \n"
-                  "  |       \n"
-                  "  |       \n"
-                  "__|__     \n")
+            turtle.home()
+            turtle.pendown()
+            turtle.left(90)
+            turtle.forward(175)
+            turtle.left(90)
+            turtle.forward(74)
+            turtle.left(90)
+            turtle.forward(35)
+            turtle.penup()
+            turtle.goto(-135,-35)
             print("Wrong guess. " + str(limit - count) + " guesses remaining\n")
             
           elif count == 2:
-            time.sleep(1)
-            print("   _____ \n"
-                  "  |     | \n"
-                  "  |     |\n"
-                  "  |     | \n"
-                  "  |     O \n"
-                  "  |      \n"
-                  "  |      \n" 
-                  "__|__\n")
+            turtle.goto(-74, 140)
+            turtle.pendown()
+            turtle.right(90)
+            turtle.circle(15,None,100)
+            turtle.penup()
             print("Wrong guess. " + str(limit - count) + " guesses remaining\n")
   
           elif count == 3:
-            time.sleep(1)
-            print("   _____ \n"
-                  "  |     | \n"
-                  "  |     |\n"
-                  "  |     | \n"
-                  "  |     O \n"
-                  "  |     | \n"
-                  "  |       \n"
-                  "__|__\n")
+            turtle.goto(-74, 140)
+            turtle.pendown()
+            turtle.left(90)
+            turtle.penup()
+            turtle.forward(30)
+            turtle.pendown()
+            turtle.forward(40)
+            turtle.right(180)
+            turtle.forward(30)
+            turtle.penup()
             print("Wrong guess. " + str(limit - count) + " guesses remaining\n")
   
           elif count == 4:
-            time.sleep(1)
-            print("   _____ \n"
-                  "  |     | \n"
-                  "  |     | \n"
-                  "  |     | \n"
-                  "  |     O \n"
-                  "  |    /| \n"
-                  "  |       \n"
-                  "__|__\    n")
+            turtle.goto(-74, 100)
+            turtle.pendown()
+            turtle.left(55)
+            turtle.forward(45)
+            turtle.right(180)
+            turtle.forward(45)
+            turtle.penup()
             print("Wrong guess. " + str(limit - count) + " guesses remaining\n")
   
           elif count == 5:
-            time.sleep(1)
-            print("   _____ \n"
-                  "  |     | \n"
-                  "  |     |\n"
-                  "  |     | \n"
-                  "  |     O \n"
-                  "  |    /|\ \n"
-                  "  |      \n" 
-                  "__|__\n")
+            turtle.goto(-74, 100)
+            turtle.pendown()
+            turtle.left(70)
+            turtle.forward(45)
+            turtle.right(180)
+            turtle.forward(45)
+            turtle.penup()
             print("Wrong guess. " + str(limit - count) + " guesses remaining\n")
   
           elif count == 6:
-            time.sleep(1)
-            print("   _____ \n"
-                  "  |     | \n"
-                  "  |     |\n"
-                  "  |     | \n"
-                  "  |     O \n"
-                  "  |    /|\ \n"
-                  "  |      \ \n"
-                  "__|__\n")
+            turtle.goto(-74, 100)
+            turtle.pendown()
+            turtle.left(55)
+            turtle.forward(30)
+            turtle.right(30)
+            turtle.forward(60)
+            turtle.right(180)
+            turtle.forward(60)
+            turtle.penup()
             print("Wrong guess. " + str(limit - count) + " last guess remaining\n")
   
           elif count == 7:
-            time.sleep(1)
-            print("   _____ \n"
-                  "  |     | \n"
-                  "  |     |\n"
-                  "  |     | \n"
-                  "  |     O \n"
-                  "  |    /|\ \n"
-                  "  |    / \ \n"
-                  "__|__      \n")
+            turtle.goto(-74, 70)
+            turtle.pendown()
+            turtle.right(120)
+            turtle.forward(60)
+            turtle.penup()
             print("Wrong guess. " + str(limit - count) + " guesses remaining\n")
             print("Wrong guess. Game over!\n")
             clear_console_instant
