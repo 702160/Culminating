@@ -1,8 +1,14 @@
+#Drew Johnston
+#January 20th, 2023
+#Culminating Project Hangman
+#Show the knowledge I have gained over the course of this class
+
 import time
 import TextDelay 
 import os
 from time import sleep
 import turtle
+import random
 
 def clear_console_instant(clear):
   sleep (0.2)
@@ -45,8 +51,9 @@ def main():
     global already_guessed
     global length
     global play_game
-    words_to_guess = "therapy" 
-    word = (words_to_guess)
+    words_to_guess = ["friends", "journey", "dialect", "healthy", "quickly", "jumping", "quality", "amplify"]
+    rand = random.randint(0, len(words_to_guess))
+    word = words_to_guess[rand]
     length = len(word)
     count = 0
     display = '_' * length
@@ -54,13 +61,7 @@ def main():
     play_game = ""
 
 # Initializing all the conditions required for the game:
-
-while True:
-  question = ask("\033[1;35m Would you like to play hangman?(y/n)? ", ['y','yes','Yes','n','no','No'])
-  if question == 'y' or 'yes' or 'Yes':
-    True
-  elif question == 'n' or 'no' or 'No':
-    False
+  
 def hangman():
     global count
     global display
@@ -171,7 +172,10 @@ def hangman():
   
 while True:
   question = ask("\033[1;35m Would you like to play hangman?(y/n)? ", ['y','yes','Yes','n','no','No'])
-  if question == 'y' or 'yes' or 'Yes':
-    True
-  elif question == 'n' or 'no' or 'No':
-    False
+  if question in ['y','yes','Yes']:
+    main ()
+    hangman()
+  elif question in ['n','no','No']:
+    print("Thanks for playing!")
+    break
+    
