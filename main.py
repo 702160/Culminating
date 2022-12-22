@@ -7,28 +7,31 @@ import time
 import TextDelay 
 import os
 from time import sleep
-import turtle
 import random
+import turtle
+global score 
+global high_score 
 
-def clear_console_instant(clear):
-  sleep (0.2)
-  os.system('clear')
-  
+pen = turtle.Turtle()
+pen.speed(0)
+pen.shape("square")
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 220)
+pen.write("Score: 0 High Score: 0", align="center", font=("times new roman", 20, "normal"))
+
 #Intro to the hangman game and instuctions
 print(" ")
 remember = TextDelay.delay_print("Welcome to Hangman")
 print(" ")
 time.sleep(2)
 
-def clear_console(clear):
+def clear_console_long():
   sleep (3)
   os.system('clear')
-
-def clear_console_long(clear):
-  sleep (5)
-  os.system('clear')
-
-def clear_console_instant(clear):
+  
+def clear_console_instant():
   sleep (0.2)
   os.system('clear')
 
@@ -68,6 +71,7 @@ def hangman():
     global word
     global already_guessed
     global play_game
+    global score
     limit = 7
     guess = input("The word is: " + display + " Enter your guess: \n")
     guess = guess.strip()
@@ -104,7 +108,7 @@ def hangman():
           turtle.goto(-74, 140)
           turtle.pendown()
           turtle.right(90)
-          turtle.circle(15,None,100)
+          turtle.circle(15,None,25)
           turtle.penup()
           print("Wrong guess. " + str(limit - count) + " guesses remaining\n")
 
@@ -122,6 +126,7 @@ def hangman():
           print("Wrong guess. " + str(limit - count) + " guesses remaining\n")
 
         elif count == 4:
+          turtle.speed(10)
           turtle.goto(-74, 100)
           turtle.pendown()
           turtle.left(55)
@@ -161,11 +166,14 @@ def hangman():
           turtle.penup()
           print("Wrong guess. " + str(limit - count) + " guesses remaining\n")
           print("Wrong guess. Game over!\n")
-          clear_console_instant
+          clear_console_long()
+          turtle.clear()
           True 
           
     if word == '_' * length:
         print("Congrats! You have guessed the word correctly!")
+        clear_console_long()
+        turtle.clear()
         
     elif count != limit:
         hangman()
