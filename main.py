@@ -19,14 +19,16 @@ pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0, 220)
-pen.write("Score: 0 High Score: 0", align="center", font=("times new roman", 20, "normal"))
+pen.write("Win Streak: 0", align="center", font=("times new roman", 20, "normal"))
+
+score = 0
 
 #Intro to the hangman game and instuctions
 print(" ")
 remember = TextDelay.delay_print("Welcome to Hangman")
 print(" ")
 time.sleep(2)
-
+  
 def clear_console_long():
   sleep (3)
   os.system('clear')
@@ -172,6 +174,7 @@ def hangman():
           
     if word == '_' * length:
         print("Congrats! You have guessed the word correctly!")
+        score += 1
         clear_console_long()
         turtle.clear()
         
@@ -181,6 +184,7 @@ def hangman():
 while True:
   question = ask("\033[1;35m Would you like to play hangman?(y/n)? ", ['y','yes','Yes','n','no','No'])
   if question in ['y','yes','Yes']:
+    pen.write("Score: {}".format(score), align="center", font=("times new roman", 20, "normal"))
     main ()
     hangman()
   elif question in ['n','no','No']:
