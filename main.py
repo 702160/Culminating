@@ -9,16 +9,16 @@ import os
 from time import sleep
 import random
 import turtle
-global score 
-global high_score 
 from tabulate import tabulate
+global record
 
 #Establishes what the table will look like
 file = 'test.txt'
 database = []
-record = ['','']
+record = []
 question = ''
 DELIMITER = "|"
+score = 0
 
 """
 Function reads a flat file, bar separated into a multi dimensional array
@@ -109,17 +109,11 @@ Function adds a record, ensures no duplicate student number
 inputs:array database
 outputs:array database
 """
-def add(database):
-    record = ['','',]
-    record[0] = input(" \033[1;34m Enter Name:")
-    found = False
-    for row in range(len(database)):
-      if database[row][0] == record[0]:
-        found = True
-    if found:  
-      print(" \033[1;31m Sorry, no duplicates please")  
-    else:  
-      database.append(record)  
+def add():
+  global record
+  global score
+  score += 1
+  record.append(score)
 
 #Get the previous version of the database last accessed
 database = readFileIntoList(file)
@@ -259,20 +253,24 @@ def hangman():
         print("Congrats! You have guessed the word correctly!")
         clear_console_long()
         turtle.clear()
+        add()
+        
         
     elif count != limit:
         hangman()
 
 while True:
   print("\033[1;34m Welcome to Hangman")
-  question = ask("\033[1;34m What would you like to do (play, display leaderboard, exit)? ", ['play','display leaderboard','exit'])
+  question = ask("\033[1;34m What would you like to do (play, display score, exit)? ", ['play','display score','exit'])
 
   if question == "play":
-    database = add(database)
     main()
     hangman()  
-  elif question == "display leaderboard":
-    display(database,['Name', 'Total Score'])
+  elif question == "display score":
+    com_score = 0
+    for x in record:
+      com_score += record[x]
+    print(com_score)
   elif question == "exit":
     TextDelay.delay_print_fast(" \033[1;32m Thanks for using!")
     break 
