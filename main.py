@@ -33,6 +33,19 @@ def remove_empty_lines():
   except FileNotFoundError:
      print(" \033[1;31m File does not exist")
 
+#Establishes what the words written on screen will look like
+words = turtle.Turtle()
+words.color("blue")
+words.penup()
+
+#Function that writes the score and clears it when called
+def writescore():
+  words.goto(0,-200)
+  words.write("Community Score:{} ".format(score), align="center", font=("arial",25,"bold"))
+  words.hideturtle()
+  clear_console()
+  words.clear()
+  
 #Ask function that rejects invalid input
 def ask(question, validList):
   while True:
@@ -57,6 +70,9 @@ def add():
 def clear_console_long():
   sleep (3)
   os.system('clear') 
+def clear_console():
+  sleep (2.5)
+  os.system('clear')
 def clear_console_instant():
   sleep (0.2)
   os.system('clear')
@@ -189,9 +205,10 @@ def hangman():
     #If all of the correct letters are guessed     
     if word == '_' * length:
         print("Congrats! You have guessed the word correctly!")
-        clear_console_long()
-        turtle.clear()
         add()
+        writescore()
+        clear_console()
+        turtle.clear()
     #If the maximum amount of wrong guesses isn't reached then the game continues 
     elif count != limit:
         hangman()
@@ -202,14 +219,16 @@ while True:
   print("")
   #Asks the user what they would like to do and runs the matching feature
   question = ask("\033[1;34m What would you like to do (1: Play, 2: Display Score, 3: Exit)? ", ['1','2','3'])
+  
   #Runs hangman
   if question == '1':
     main()
     hangman()  
+    
   #Displays the total community score (every win by every user added up)
   elif question == '2':
-    TextDelay.delay_print_fast(" Total Community Score: " + str(score))
-    print("")
+    writescore()
+    
   #Exits the program 
   elif question == '3':
     TextDelay.delay_print_fast(" \033[1;32m Thanks for using!")
