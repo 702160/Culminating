@@ -38,6 +38,14 @@ words = turtle.Turtle()
 words.color("blue")
 words.penup()
 
+#Writes the title and instructions for the user to look at the console
+def writetitle():
+  words.goto(0,150)
+  words.write("Hangman", align="center", font=("arial",25,"bold"))
+  words.goto(0,130)
+  words.write("(Please look at the console)", align="center", font=("arial",15,"bold"))
+  words.hideturtle()
+  
 #Function that writes the score and clears it when called
 def writescore():
   words.goto(0,-200)
@@ -66,7 +74,7 @@ def add():
   file.write(str(score))
   file.close()
 
-#Functions used to clear the screen for each new game
+#Functions used to clear the screen
 def clear_console_long():
   sleep (3)
   os.system('clear') 
@@ -215,6 +223,10 @@ def hangman():
 
 #Main program loop
 while True:
+  writetitle()
+  words.hideturtle()
+  clear_console_long()
+  words.clear()
   TextDelay.delay_print("\033[1;34m Welcome to Hangman")
   print("")
   #Asks the user what they would like to do and runs the matching feature
